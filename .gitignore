@@ -1,0 +1,10 @@
+# Fichiers générés par Maven
+**/target/
+
+# Fichiers d'IDE
+.idea/
+.vscode/
+*.iml
+
+# Fichiers système
+.DS_Store
