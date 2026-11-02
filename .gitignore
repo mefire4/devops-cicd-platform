@@ -9,3 +9,5 @@
 # Fichiers système
 .DS_Store
 
+# secret
+*.env
