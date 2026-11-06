@@ -22,7 +22,7 @@ pipeline {
         stage('package'){
             steps {
                 echo 'Generation du fichier JAR...'
-                sh 'mvm -f app/pom.xml -DskipTests package'
+                sh 'mvn -f app/pom.xml -DskipTests package'
 
                 archiveArtifacts artifacts: 'app/target/*.jar',
                                  fingerprint: true
