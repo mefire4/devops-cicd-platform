@@ -18,6 +18,16 @@ pipeline {
                 sh 'mvn -f app/pom.xml test'
             }
         }
+
+        stage('package'){
+            steps {
+                echo 'Generation du fichier JAR...'
+                sh 'mvm -f app/pom.xml -DskipTests package'
+
+                archiveArtifacts artifacts: 'app/target/*.jar',
+                                 fingerprint: true
+            }
+        }
     }
 
     post {
