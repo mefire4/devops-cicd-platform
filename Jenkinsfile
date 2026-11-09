@@ -17,6 +17,12 @@ pipeline {
                 echo 'Execution des tests unitaires...'
                 sh 'mvn -f app/pom.xml test'
             }
+
+            post {
+                always {
+                    junit 'app/target/surefire-reports/*.xml'
+                }
+            }
         }
 
         stage('package'){
