@@ -34,6 +34,12 @@ pipeline {
                                  fingerprint: true
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t demo-cicd:${BUILD_NUMBER} app/'
+            }
+        }
     }
 
     post {

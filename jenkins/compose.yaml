@@ -16,6 +16,10 @@ services:
     restart: unless-stopped
     depends_on:
       - jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - "984"
     environment:
       JENKINS_URL: http://jenkins:8080/
       JENKINS_AGENT_NAME: maven-agent
