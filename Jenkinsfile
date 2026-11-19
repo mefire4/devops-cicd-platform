@@ -45,7 +45,7 @@ pipeline {
             steps {
                 WithCredentials([usernamePassword(
                     credentialsId: 'ghcr-credentials',
-                    usernameVariable: 'GH_USER'
+                    usernameVariable: 'GH_USER',
                     passwordVariable: 'GH_TOKEN'
                 )]) {
                     sh '''
