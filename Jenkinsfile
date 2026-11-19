@@ -1,4 +1,3 @@
-
 pipeline {
     agent {
         label 'maven-agent'
@@ -25,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('package'){
+        stage('Package') {
             steps {
                 echo 'Generation du fichier JAR...'
                 sh 'mvn -f app/pom.xml -DskipTests package'
@@ -41,9 +40,9 @@ pipeline {
             }
         }
 
-        stage('Docker push') {
+        stage('Docker Push') {
             steps {
-                WithCredentials([usernamePassword(
+                withCredentials([usernamePassword(
                     credentialsId: 'ghcr-credentials',
                     usernameVariable: 'GH_USER',
                     passwordVariable: 'GH_TOKEN'
@@ -53,7 +52,7 @@ pipeline {
                         docker tag demo-cicd:${BUILD_NUMBER} ghcr.io/mefire4/demo-cicd:${BUILD_NUMBER}
                         docker push ghcr.io/mefire4/demo-cicd:${BUILD_NUMBER}
                         docker logout ghcr.io
-                    '''   
+                    '''
                 }
             }
         }
