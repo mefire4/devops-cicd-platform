@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-cicd
+  labels:
+    app: demo-cicd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-cicd
+  template:
+    metadata:
+      labels:
+        app: demo-cicd
+    spec:
+      imagePullSecrets:
+        - name: ghcr-pull
+      containers:
+        - name: demo-cicd
+          image: ghcr.io/mefire4/demo-cicd:24
